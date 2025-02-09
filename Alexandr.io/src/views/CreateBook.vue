@@ -42,10 +42,9 @@ export default {
     });
 
     async function handleSubmit() {
-      console.log(formData.value)
       try {
         await api.post('/create', {
-          title: formData.value.title,
+          title: formData.value.title.toUpperCase(),
           author: formData.value.author,
           genre: formData.value.genre,
           description: formData.value.description,

@@ -13,15 +13,28 @@
   --secondary-bg-color: rgb(255, 250, 250);
 
   /*ELEMENTS*/
-  --primary-color: rgb(215, 120, 5);
-  --secondary-color: rgb(255, 210, 162);
+  --primary-color: rgb(225, 175, 50);
+  --secondary-color: rgb(255, 240, 190);
+  --tertiary-color: rgb(195, 150, 40);
 
+  /*BOOKCARD*/
+  --bookcard-color: rgb(27, 27, 27);
+  --bookcard-hover-color: rgb(50, 50, 50);
+  --bookcard-text-color: rgb(255, 255, 227);
+  --bookcard-link-color: var(--primary-color);
 
   /*TEXT*/
   --primary-text-color: rgb(245,245,255);
-  --secondary-text-color: rgb(255,225,155);
+  --secondary-text-color: rgb(255, 245, 215);
 
   /*BUTTONS*/
   --button-confirm: rgb(50, 200, 40);
   --button-cancel: rgb(245, 10, 10);
+}
+
+.clamp-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }

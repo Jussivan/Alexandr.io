@@ -34,8 +34,8 @@ Router.get('/findAll', async (req,res) => {
 
 Router.get('/findBook', async (req,res) => {
     try {
-        const { id } = req.body;
-        const book = await prisma.book.findFirst({where: { id : id }})
+        const { title } = req.body;
+        const book = await prisma.book.findMany({where: { title : { startsWith: title }}})
         res.status(200).json({message: "Livro listado com sucesso!", book});
     } catch (err) {
         res.status(500).json({message: err})

@@ -7,7 +7,7 @@ import { PlusCircleIcon, HomeIcon, XCircleIcon } from '@heroicons/vue/24/solid'
 
 <template class="h-screen">
   <header>
-    <nav class="py-2 bg-[var(--primary-color)] flex items-center justify-evenly text-[var(--primary-text-color)]">
+    <nav class="w-full py-2 bg-[var(--primary-color)] flex items-center justify-evenly text-[var(--primary-text-color)] fixed top-0">
         <RouterLink to="/adicionar" class="flex flex-col justify-center items-center text-center hover:text-[var(--secondary-text-color)]">
           <PlusCircleIcon class="size-7"/>
           <span>Adicionar Livro</span>
@@ -22,7 +22,7 @@ import { PlusCircleIcon, HomeIcon, XCircleIcon } from '@heroicons/vue/24/solid'
         </RouterLink>
     </nav>
   </header>
-  <main class="w-full flex items-center justify-center my-10 ">
+  <main class="w-full flex items-center justify-center my-25">
     <RouterView/>
   </main>
   <footer className="bg-[var(--primary-color)] flex items-center justify-center fixed bottom-0 w-full">
