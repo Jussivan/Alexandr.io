@@ -32,15 +32,17 @@ Router.get('/findAll', async (req,res) => {
     }
 })
 
-Router.get('/findBook', async (req,res) => {
+Router.post('/findBook', async (req, res) => {
     try {
         const { title } = req.body;
-        const book = await prisma.book.findMany({where: { title : { startsWith: title }}})
-        res.status(200).json({message: "Livro listado com sucesso!", book});
+        console.log(title);
+        const book = await prisma.book.findMany({where: { title: { startsWith: title }}});
+        res.status(200).json({ message: "Livros listados com sucesso!", book });
     } catch (err) {
-        res.status(500).json({message: err})
+        console.error(err);
+        res.status(500).json({ message: "Ocorreu um erro ao buscar os livros." });
     }
-})
+});
 
 Router.put('/update', async (req, res) => {
     try {

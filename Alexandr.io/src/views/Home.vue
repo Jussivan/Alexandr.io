@@ -4,46 +4,42 @@ import Search from '@/components/search/search.vue';
 import BookCard from '@/components/bookcard/BookCard.vue';
 import api from '../api/api.js';
 
-const books = ref([]); // Lista de livros
-const searchTerm = ref(''); // Termo de busca
+const books = ref([]);
+const searchTerm = ref('');
 
-// Função para buscar todos os livros
 const fetchAllBooks = async () => {
     try {
         const response = await api.get('/findAll');
-        books.value = response.data.book; // Atualiza a lista de livros
+        books.value = response.data.book;
     } catch (error) {
         console.error('Erro ao buscar livros:', error);
     }
 };
 
-// Função para buscar livros por título
 const fetchBooksByTitle = async (title) => {
     try {
-        const response = await api.get('/findBook', {
-            params: { title: title.toUpperCase() } // Passa o termo de busca como parâmetro
+        const response = await api.post('/findBook', {
+            title: title.toUpperCase()
         });
-        books.value = response.data.book; // Atualiza a lista de livros
+        books.value = response.data.book;
+        console.log(response.data.book); 
     } catch (error) {
         console.error('Erro ao buscar livros:', error);
     }
 };
 
-// Observador para o termo de busca
 watch(
-    searchTerm, // Observa mudanças no searchTerm
+    searchTerm,
     (newTerm) => {
         if (newTerm.trim() === '') {
-            fetchAllBooks(); // Se o campo estiver vazio, busca todos os livros
+            fetchAllBooks();
         } else {
-            fetchBooksByTitle(newTerm); // Caso contrário, busca por título
+            fetchBooksByTitle(newTerm);
         }
     },
-    { immediate: true } // Executa o watch imediatamente ao carregar a página
+    { immediate: true }
 );
 
-// Busca inicial ao carregar a página
-onMounted(fetchAllBooks);
 </script>
 
 <template>
