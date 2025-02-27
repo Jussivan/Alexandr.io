@@ -1,89 +1,31 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import { PlusCircleIcon, HomeIcon, XCircleIcon } from '@heroicons/vue/24/solid'
 </script>
 
-<template>
+
+
+<template class="h-screen">
   <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <h1 class="bg-green-400 text-3xl font-bold underline">
-    Hello world!
-  </h1>
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
+    <nav class="w-full py-2 bg-[var(--primary-color)] flex items-center justify-evenly text-[var(--primary-text-color)] fixed top-0">
+        <RouterLink to="/adicionar" class="flex flex-col justify-center items-center text-center hover:text-[var(--secondary-text-color)]">
+          <PlusCircleIcon class="size-7"/>
+          <span>Adicionar Livro</span>
+        </RouterLink>
+        <RouterLink to="/" class="flex flex-col justify-center items-center text-center hover:text-[var(--secondary-text-color)]">
+          <HomeIcon class="size-7"/>
+          <span>Home</span>
+        </RouterLink>
+        <RouterLink to="/deletar" class="flex flex-col justify-center items-center text-center hover:text-[var(--secondary-text-color)]">
+          <XCircleIcon class="size-7"/>
+          <span>Deletar Livro</span>
+        </RouterLink>
+    </nav>
   </header>
-
-  <RouterView />
+  <main class="w-full flex items-center justify-center my-25">
+    <RouterView/>
+  </main>
+  <footer className="bg-[var(--primary-color)] flex items-center justify-center fixed bottom-0 w-full">
+    <span className="p-5 text-white text-[15px] font-bold">Alexander.io</span>
+  </footer>
 </template>
-
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
-}
-</style>
